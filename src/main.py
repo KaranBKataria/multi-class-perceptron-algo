@@ -3,7 +3,10 @@ import numpy as np
 import matplotlib.pyplot as plt  
 import random
 import seaborn as sns  
-import plotly.express as px  
+import plotly.express as px
+
+#%% Define all global and constant variables
+accents = ["ES", "FR", "GE", "IT", "UK", "US"]
 
 #%% Importing in the CSV file containing the data 
 
