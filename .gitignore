@@ -1,3 +1,6 @@
 # Ignore all Bytecode files
-
 *.pyc
+
+# Ignore all assignment-related documents
+*.pdf
+*.docx
