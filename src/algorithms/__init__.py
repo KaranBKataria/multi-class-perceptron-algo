@@ -1,0 +1,2 @@
+from algorithms.binary_class_perceptron import Perceptron2
+from algorithms.multi_class_perceptron import multi_class_perceptron

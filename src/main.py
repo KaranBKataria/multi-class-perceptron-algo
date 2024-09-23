@@ -1,3 +1,7 @@
+import utils
+import grid_search
+import algorithms
+
 import pandas as pd  
 import numpy as np
 import matplotlib.pyplot as plt  
@@ -20,7 +24,7 @@ dataset.shape
 #%% Create a training dataset containing the predictors and apply PCA
 
 X_train = dataset.drop('Accent', axis=1)
-pca_matrix = PCA(X_train)
+pca_matrix = utils.PCA(X_train)
 
 # Rename the columns of the PCA matrix
 pca_matrix.columns = [f"PC{i}" for i in range(1, 13)]
@@ -74,12 +78,12 @@ labels = pca_matrix_accent.Accent.apply(lambda x: encoding(x))
 #%% Compute the hyperparameter set for gamma, containing the minimum and
 # maximum value
 
-gamma_ranges(X_train)
+grid_search.gamma_ranges(X_train)
 
 # Then we produce the set of gamma values we wish to perform hyperparameter
 # tuning on
 
-gamma_increments(X_train)
+grid_search.gamma_increments(X_train)
 
 #%% Add bias to the PCA and original dataset and rearrange the columns
 
@@ -104,12 +108,12 @@ dataset_with_bias = dataset_with_bias[["bias"] + [f"X{i}" for i in range(1, 13)]
 #%% Implementing the multi-class perceptron algorithm
 
 # Test the linear seperability in the ORIGINAL 12-D feature space
-W_combined1 = combined_weights(np.array(dataset_with_bias), labels)
+W_combined1 = utils.combined_weights(np.array(dataset_with_bias), labels)
 
 # Determining the refined weight matrix from the multi-class perceptron after 10 iterations 
-multi_class_12d = multi_class_perceptron(dataset_with_bias, labels, W_combined1)
+multi_class_12d = algorithms.multi_class_perceptron(dataset_with_bias, labels, W_combined1)
 
-print(f"For the original 12D feature space, the {sanity_check(dataset_with_bias, multi_class_12d)['r10']}")
+print(f"For the original 12D feature space, the {utils.sanity_check(dataset_with_bias, multi_class_12d)['r10']}")
 
 
 # Test the linear seperability in the feature space defined by linear PCA
@@ -118,10 +122,10 @@ pca_matrix_bias = np.array(pca_matrix_bias)
 # iterate through the index of the columns in the array pca_matrix_bias 
 for i in list(np.arange(3, 14, 1)):
 
-  W_combined = combined_weights(pca_matrix_bias[:, 0:i], labels)
-  W_combined_optimal = multi_class_perceptron(pca_matrix_bias[:, 0:i], labels, W_combined)
+  W_combined = utils.combined_weights(pca_matrix_bias[:, 0:i], labels)
+  W_combined_optimal = algorithms.multi_class_perceptron(pca_matrix_bias[:, 0:i], labels, W_combined)
 
-  print(f"For PC1 to {str(i-1)} the {sanity_check(pca_matrix_bias[:,0:i], W_combined_optimal)['r10']}")
+  print(f"For PC1 to {str(i-1)} the {utils.sanity_check(pca_matrix_bias[:,0:i], W_combined_optimal)['r10']}")
 
 
 
@@ -130,7 +134,7 @@ for i in list(np.arange(3, 14, 1)):
 
 # We produce a grid-search matrix for the entire hyperparameter space
 # The hyperparameter space includes 316 PCs (13 PCs to 329 PCs) and 8 gamma values
-final_grid_matrix = grid_matrix2(X_train, labels, 329, 13)
+final_grid_matrix = grid_search.grid_matrix2(X_train, labels, 329, 13)
 
 
 # We do not plot the entire grid-search matrix to produce a heatmap with the
@@ -157,7 +161,7 @@ plt.show()
 # and for which pair of hyperparameter values, we plot a grid-search matrix for
 # a subset of top PCs (225 to 329 PCs)
 
-subset_grid_matrix = grid_matrix2(X_train, labels, 330, 225)
+subset_grid_matrix = grid_search.grid_matrix2(X_train, labels, 330, 225)
 
 # Grid-Search-2.png
 plt.figure(figsize=(15, 30))
