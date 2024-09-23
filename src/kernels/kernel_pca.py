@@ -1,6 +1,3 @@
-# The function below computes Kernel PCA upon the original dataset X depending on a specific gamma value g
-# To do this, we utilise SVD to determine the matrix of eigenvectors of K_norm as rows, VT
-# The function returns a change of basis data matrix transformed under kernel PCA for a given gamma g and dataset X
 
 def kernel_pca(X: pd.DataFrame, g: float) -> np.array:
 
