@@ -1,11 +1,17 @@
-# Below is the function for the Multi-Class Perceptron Algorithm. 
-# The function/algorithm is limited to 10 iterations. 1 run through of all 329 data points counts as 1 iteration. 
-# The function will return a new, refined weight matrix 'W_combined'.
-# The new, refined weight matrix is computed through updating the weights per iteration if errors occur and is returned by the function 
 
-def multi_class_perceptron(X, Y, W_combined):
+def multi_class_perceptron(X: pd.DataFrame, Y: pd.DataFrame, W_combined: np.array) -> np.array:
 
     """
+    This function defines the standard MULTI-class Perceptron algorithm. It
+    fits a linear classifier through updating the weight matrix provided as input
+    (the combination of the invidiual weight vectors for each accent class).
+
+    The maximum number of iterations in fitting the linear classifier is fixed
+    as a integer literal of 10, as per the specifications of the coursework to
+    prevent infinite recursion (assuming perfect linear classification is not
+    possible).
+
+    The output is a refined weightm matrix for the linear classifier.
     """
 
     errors = 1
@@ -22,7 +28,7 @@ def multi_class_perceptron(X, Y, W_combined):
             x = X[i, :]
             y = Y[i]
 
-            y_pred = np.argmax((np.matmul(W_combined,x)))
+            y_pred = np.argmax((np.matmul(W_combined, x)))
 
             e = y - y_pred
 
@@ -30,11 +36,14 @@ def multi_class_perceptron(X, Y, W_combined):
 
                 errors += 1
 
-                W_combined[y_pred,:] = W_combined[y_pred,:] - x   # Updating the row which corresponds to the weight vector for the incorrect prediction by reducing it by x 
-                
-                W_combined[y,:] = W_combined[y,:] + x    # Updating the row which corresponds to the weight vector for the ground truth by increasing it by x 
-        
-        steps += 1   # Once all i's in r are completed, increase iteration count by 1
+                # Updating the row which corresponds to the weight vector for the incorrect prediction by reducing it by x 
+                W_combined[y_pred, :] = W_combined[y_pred, :] - x
+
+                # Updating the row which corresponds to the weight vector for the ground truth by increasing it by x 
+                W_combined[y, :] = W_combined[y, :] + x
+
+        # Once all i's in r are completed, increase iteration count by 1
+        steps += 1
     
     return W_combined
 
