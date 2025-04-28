@@ -2,7 +2,7 @@
 
 ## Overview
 
-This project, part of a university assignment, involves programming the multi-class perceptron algorithm from scratch. The algorithm was then applied to determine whether a 6-class dataset is perfectly linearly separable in a space defined by: the original ($\mathbb{R}^{12}$) input space; linear PCA; and Kernel PCA. 
+This project, part of a university assignment, involves programming the multi-class perceptron algorithm from scratch. The algorithm was then applied to determine whether a 6-class dataset is perfectly linearly separable in a space defined by: the original ($\mathrm{R}^{12}$) input space; linear PCA; and Kernel PCA. 
 
 Both PCA forms' source code and implementation involved partial use of third-party libraries (NumPy and Pandas). However, for hyperparameter tuning, a grid-search function was programmed from scratch and was used to produce a heatmap. 
 
