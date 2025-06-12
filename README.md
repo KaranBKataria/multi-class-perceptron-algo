@@ -16,10 +16,12 @@ Implementing the multi-class perceptron on different spaces (12-dimensional inpu
 
 ## Kernelising PCA
 
-If analysis suggests the data in the original input space is not linearly separable via a linear discriminant function (hyperplane), or in the linear PCA space, this suggests that the data may be lying in a lower-dimensional, non-linear manifold. This motivates the use of kernelised PCA, one of the simplest non-linear dimensionality reduction / manifold learning approaches to project data onto a non-linear, arbitrary curve in the original input space.
+If analysis suggests the data in the original input space is not linearly separable via a linear discriminant function (hyperplane), or in the linear PCA space, this suggests that the data may be lying in a lower-dimensional, non-linear manifold. This motivates the use of kernelised PCA, one of the simplest non-linear dimensionality reduction / manifold learning techniques, which projects the data onto a non-linear, arbitrary curve in the original input space.
 
 Kernelising PCA requires the selection of a valid kernel $k: \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$ (under Mercer's conditions); the simplest and most common kernel is the Radial Basis Function (RBF) kernel:
 
 $$
 k(\mathbf{x}, \mathbf{x}') = \mathrm{exp}\Bigg(-\frac{\lVert \mathbf{x} - \mathbf{x}' \rVert_{2}^{2}}{2 \ell^{2}} \Bigg)
 $$
+
+for $\mathbf{x}, \mathbf{x}' \in \mathcal{X} \subset \mathbb{R}^{n}$.
