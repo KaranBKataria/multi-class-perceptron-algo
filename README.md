@@ -21,5 +21,5 @@ If analysis suggests the data in the original input space is not linearly separa
 Kernelising PCA requires the selection of a valid kernel $k: \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$ (under Mercer's conditions); the simplest and most common kernel is the Radial Basis Function (RBF) kernel:
 
 $$
-k(\mathbf{x}, \mathbf{x}') = \mathrm{exp}(-\frac{\lVert \mathbf{x} - \mathbf{x}' \rVert{2}^{2}}{2 \ell^{2}})
+k(\mathbf{x}, \mathbf{x}') = \mathrm{exp}(-\frac{\lVert \mathbf{x} - \mathbf{x}' \rVert_{2}^{2}}{2 \ell^{2}})
 $$
