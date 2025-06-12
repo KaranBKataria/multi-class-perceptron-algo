@@ -24,4 +24,4 @@ $$
 k(\mathbf{x}, \mathbf{x}') = \mathrm{exp}\Bigg(-\frac{\lVert \mathbf{x} - \mathbf{x}' \rVert_{2}^{2}}{2 \ell^{2}} \Bigg)
 $$
 
-for $\mathbf{x}, \mathbf{x}' \in \mathcal{X} \subseteq \mathbb{R}^{n}$.
+for $\mathbf{x}, \mathbf{x}' \in \mathcal{X} \subseteq \mathbb{R}^{n}$, $\ell \in \mathbb{R}$ which is the lengthscale parameter.
