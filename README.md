@@ -24,4 +24,4 @@ $$
 k(\mathbf{x}, \mathbf{x}') = \mathrm{exp}\Bigg(-\frac{\lVert \mathbf{x} - \mathbf{x}' \rVert_{2}^{2}}{2 \ell^{2}} \Bigg) = \mathrm{exp}\Bigg(- \gamma \lVert \mathbf{x} - \mathbf{x}' \rVert_{2}^{2} \Bigg)
 $$
 
-for $\mathbf{x}, \mathbf{x}' \in \mathcal{X} \subseteq \mathbb{R}^{n}$, $\ell \in \mathbb{R}$ which is the lengthscale parameter and $\lVert \cdot \rVert_{2}$ is the Euclidean norm. $\mathcal{X}$ is any arbitrary subspace of an $n$-dimensional Euclidean space, $\mathbb{R}$.
+for $\mathbf{x}, \mathbf{x}' \in \mathcal{X} \subseteq \mathbb{R}^{n}$, $\ell \in \mathbb{R}$ which is the lengthscale parameter and $\lVert \cdot \rVert_{2}$ is the Euclidean norm. $\mathcal{X}$ is any arbitrary subspace of an $n$-dimensional Euclidean space, $\mathbb{R}^{n}$.
