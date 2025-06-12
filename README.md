@@ -13,3 +13,13 @@ The provided dataset included 12 numerical input dimensions, each corresponding 
 The goal was to investigate whether it was possible to separate these six accents into distinct regions separated by a linear classifier.
 
 Implementing the multi-class perceptron on different spaces (12-dimensional input space, linear principal subspace, and kernel principal subspace) revealed that perfect linear separability was possible in the feature space-defined kernel PCA. This was possible for specific pairs of RBF hyperparameters found via a grid search. These consisted of gamma values used as part of the Radial Basis Kernel (RBF) function used to compute Kernel PCA and the top number of Kernel Principal Components.
+
+## Kernelising PCA
+
+If analysis suggests the data in the original input space is not linearly separable via a linear discriminant function (hyperplane), or in the linear PCA space, this suggests that the data may be lying in a lower-dimensional, non-linear manifold. This motivates the use of kernelised PCA, one of the simplest non-linear dimensionality reduction / manifold learning approaches to project data onto a non-linear, arbitrary curve in the original input space.
+
+Kernelising PCA requires the selection of a valid kernel $k: \mathcal{X} \times \mathcal{X} \rightarrow \mathbb{R}$ (under Mercer's conditions); the simplest and most common kernels is the Radial Basis Function (RBF) kernel:
+
+$$
+k(\mathbf{x}, \mathbf{x}') = \mathrm{exp}(-\frac{\| \mathbf{x} - \mathbf{x}' \|_{2}^{2}}{2 \ell^{2}})
+$$
